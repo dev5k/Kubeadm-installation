@@ -129,7 +129,23 @@ Before running kubeadm, make sure all the required ports are open
 
 
 #For master Node, run:
-kubeadm init   --cri-socket /run/containerd/containerd.sock 
+kubeadm init  
+OR
+kubeadm init --cri-socket /run/containerd/containerd.sock 
+
+if you get this error message:
+
+[ERROR CRI]: container runtime is not running: output: E0731 22:55:10.706285 3979 remote_runtime.go:925] "Status from runtime service failed" err="rpc error: code = Unimplemented desc = unknown service runtime.v1alpha2.RuntimeService"
+
+
+The solution is to delete the configuration file and restart by running the command below:
+
+rm -rf /etc/containerd/config.toml
+systemctl restart containerd
+
+
+The reason seems to be that this parameter of the configuration file disables the CRI of containerd
+disabled_plugins = [“cri”]
 
 
 ==============================================================================================  
