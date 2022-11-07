@@ -178,5 +178,8 @@ Then you can join any number of worker nodes by running the following on each as
 
 kubeadm join 172.31.37.95:6443 --token zu1w7v.x4dbptrkmcspjksz \
         --discovery-token-ca-cert-hash sha256:de2e0300128abcb0b840c1c900f946d1de35e1431fa4df5c65fc51ba84891734
+        
+        NOTE: for master to run pods as well because by default it is not allowed, run the ffing command:
+        kubectl taint node $(hostname) node-role.kubernetes.io/control-plane:NoSchedule-
 
 
