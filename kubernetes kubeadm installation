@@ -107,12 +107,14 @@ containerd config default | tee /etc/containerd/config.toml
 
 # Restart containerd:
 systemctl start containerd
+systemctl enable containerd
 systemctl restart containerd
-systemctl enable containerd   
+   
 
 # enable kubelet:
 systemctl start kubelet
 systemctl enable kubelet
+systemctl restart kubelet
 
 #kubelet will start running only when a cluster is up
 
