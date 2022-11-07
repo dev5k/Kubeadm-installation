@@ -53,7 +53,7 @@ echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt
 sudo apt update -y
 
 #Update apt package index, kubeadm and kubectl, kubernetes-cni and pin their version:
-apt-get update
+
 apt-get install -y vim wget unzip curl fish tmux
 apt-get install -y kubeadm
 apt-get install -y kubectl
@@ -98,6 +98,8 @@ add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(
 
 apt update
 apt install -y containerd.io
+
+apt update
 
 # Configure containerd:
 mkdir -p /etc/containerd
